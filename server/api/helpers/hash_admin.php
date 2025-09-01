@@ -1,4 +1,4 @@
 <?php
-$password = "adminSSG2025!";
+$password = "your admin password here";
 $hashed = password_hash($password, PASSWORD_DEFAULT);
 echo $hashed;
