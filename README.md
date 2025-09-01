@@ -1,13 +1,13 @@
 🚀 Features
 
-User registration and login
+• User registration and login
 
-Admin and student dashboards
+• Admin and student dashboards
 
-Candidate management (admin side)
+• Candidate management (admin side)
 
-Voting functionality (student side)
+• Voting functionality (student side)
 
-Real-time results display
+• Real-time results display
 
-Secure authentication
+• Secure authentication
