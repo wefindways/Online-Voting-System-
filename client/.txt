@@ -1,0 +1,18 @@
+ <button
+              type="button"
+              onClick={() => {
+                setStudentId("");
+                setPassword("");
+              }}
+              className={`flex-1 min-w-[100px] border border-gray-300 py-3 rounded-lg text-lg font-medium cursor-pointer ${
+                isLogginIn
+                  ? "bg-blue-300 text-white cursor-not-allowed border-none"
+                  : "hover:bg-gray-100 transition duration-200  text-gray-600"
+              }`}
+            >
+              Clear
+            </button>
+
+// Admin dashboard UI sample
+https://www.graciousnaija.com/2021/05/e-voting-system-in-php-mysqli-source.html
+https://www.youtube.com/watch?v=aKKcXDi9DK8&t=1035s
