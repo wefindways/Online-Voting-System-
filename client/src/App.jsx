@@ -25,7 +25,7 @@ function App() {
 
         {/* admin routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/admin-dashboard" element={<AdminPage />}>
+        <Route path="/admin/home" element={<AdminPage />}>
           {/* Routes for REPORTS */}
           <Route index element={<AdminDashboard />} />
           <Route path="votes" element={<Votes />} />

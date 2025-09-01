@@ -22,7 +22,7 @@ function Sidebar() {
       {/* Navigation */}
       <div className="flex flex-col px-4 py-2 space-y-2">
         <NavLink
-          to="/admin/admin-dashboard"
+          to="/admin/home"
           end
           className={({ isActive }) =>
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
@@ -32,7 +32,7 @@ function Sidebar() {
           <span className="ml-3">Dashboard</span>
         </NavLink>
         <NavLink
-          to="/admin/admin-dashboard/votes"
+          to="/admin/home/votes"
           className={({ isActive }) =>
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
@@ -52,7 +52,7 @@ function Sidebar() {
       {/* Navigation */}
       <div className="flex flex-col px-4 py-2 space-y-2">
         <NavLink
-          to="/admin/admin-dashboard/voters"
+          to="/admin/home/voters"
           className={({ isActive }) =>
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
@@ -61,7 +61,7 @@ function Sidebar() {
           <span className="ml-3">Voters</span>
         </NavLink>
         <NavLink
-          to="/admin/admin-dashboard/positions"
+          to="/admin/home/positions"
           className={({ isActive }) =>
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
@@ -70,7 +70,7 @@ function Sidebar() {
           <span className="ml-3">Positions</span>
         </NavLink>
         <NavLink
-          to="/admin/admin-dashboard/candidates"
+          to="/admin/home/candidates"
           className={({ isActive }) =>
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
@@ -90,7 +90,7 @@ function Sidebar() {
       {/* Navigation */}
       <div className="flex flex-col px-4 py-2 space-y-2">
         <NavLink
-          to="/admin/admin-dashboard/ballot-position"
+          to="/admin/home/ballot-position"
           className={({ isActive }) =>
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
@@ -99,7 +99,7 @@ function Sidebar() {
           <span className="ml-3">Ballot Position</span>
         </NavLink>
         <NavLink
-          to="/admin/admin-dashboard/election-title"
+          to="/admin/home/election-title"
           className={({ isActive }) =>
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }

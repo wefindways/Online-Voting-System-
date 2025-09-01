@@ -24,7 +24,7 @@ function AdminLogin() {
         localStorage.setItem("admin_id", res.data.admin_id);
         setLoading(true);
         setTimeout(() => {
-          navigate("/admin/admin-dashboard");
+          navigate("/admin/home");
         }, 2000);
       } else {
         setLoading(false);
