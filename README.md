@@ -12,7 +12,6 @@
 - Frontend: React + Tailwind CSS
 - Backend: Node.js + PHP
 - Database: MySQL
-- Authentication: JWT / Firebase / (depending on what you used)
 
 ⚙️ Installation
 
@@ -20,3 +19,15 @@
 2. Navigate into the project folder: cd Online-Voting-System
 3. Install dependencies: npm install
 4. Start the development server: npm run dev
+
+🔑 Usage
+
+- Admin logs in to manage candidates and view results.
+- Students log in to cast votes.
+- Results are displayed dynamically after voting ends.
+
+📸 Screenshots
+
+📜 License
+
+- This project is for educational purposes only
