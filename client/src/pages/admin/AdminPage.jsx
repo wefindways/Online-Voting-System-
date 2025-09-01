@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 import Header from "../../components/Header.jsx";
 import Sidebar from "../../components/Sidebar.jsx";
+import Footer from "../../components/Footer.jsx";
 
 function AdminPage() {
   const navigate = useNavigate();
@@ -35,6 +36,10 @@ function AdminPage() {
       <main className="row-start-2 col-start-2 bg-gray-50 p-6 overflow-y-auto">
         <Outlet /> {/* Nested pages show here */}
       </main>
+
+      <footer className="row-start-3 col-start-2">
+        <Footer />
+      </footer>
     </div>
   );
 }
