@@ -12,6 +12,7 @@
 - Frontend: React + Tailwind CSS
 - Backend: Node.js + PHP
 - Database: MySQL
+- Visual server: Laragon
 
 ⚙️ Installation
 
