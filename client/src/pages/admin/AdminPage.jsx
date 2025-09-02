@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
-import Header from "../../components/Header.jsx";
-import Sidebar from "../../components/Sidebar.jsx";
-import Footer from "../../components/Footer.jsx";
+import Header from "../../components/admin/Header.jsx";
+import Sidebar from "../../components/admin/Sidebar.jsx";
+import Footer from "../../components/admin/Footer.jsx";
 
 function AdminPage() {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Registration from "./pages/users/Registration.jsx";
-import Login from "./pages/users/Login.jsx";
+import Registration from "./pages/user/Registration.js";
+import Login from "./pages/user/Login.jsx";
 import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
-import StudentDashboard from "./pages/users/StudentDashboard.jsx";
+import StudentDashboard from "./pages/user/StudentDashboard.jsx";
 import AdminPage from "./pages/admin/AdminPage.jsx";
 import AdminLogin from "./pages/admin/AdminLogin.jsx";
 import Votes from "./pages/admin/Votes.jsx";

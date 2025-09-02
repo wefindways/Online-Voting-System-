@@ -1,6 +1,6 @@
 import { AlignLeft, Edit, Users, User } from "lucide-react";
-import Breadcrumb from "../../components/Breadcrumb";
-import StatCard from "../../components/StatCard";
+import Breadcrumb from "../../components/admin/Breadcrumb";
+import StatCard from "../../components/admin/StatCard";
 
 function AdminDashboard() {
   return (
