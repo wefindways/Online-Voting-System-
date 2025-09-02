@@ -6,10 +6,13 @@ function AdminDashboard() {
   return (
     <div>
       <header className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <Breadcrumb /> 
+        <h1 className="text-2xl sm:text-3xl font-bold">Dashboard</h1>
+        <Breadcrumb />
       </header>
-      <section className="grid grid-cols-4 mt-10 gap-8 text-gray-900">
+      <section
+        aria-label="Dashboard cards"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10 gap-8 text-gray-900"
+      >
         <StatCard
           value="3"
           label="Voters Voter"

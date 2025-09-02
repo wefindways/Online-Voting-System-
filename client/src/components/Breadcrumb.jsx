@@ -9,7 +9,7 @@ function Breadcrumb() {
   const lastSegment = pathnames[pathnames.length - 1];
 
   return (
-    <nav className="text-sm flex items-center">
+    <nav className="text-xs sm:text-sm flex items-center">
       <Link to="/admin/home">
         <div className="flex items-center gap-2 text-gray-700 hover:text-blue-700">
           <PieChart />
