@@ -2,7 +2,7 @@ import { Menu, Vote } from "lucide-react"; // Vote = ballot-like icon
 
 function Header({ onLogout }) {
   return (
-    <header className="poppins text-white flex justify-between items-center bg-gradient-to-r from-blue-600 to-blue-500 shadow-md px-8 md:px-16 py-4 z-20">
+    <div className="poppins text-white flex justify-between items-center bg-gradient-to-r from-blue-600 to-blue-500 shadow-md px-8 md:px-16 py-4 z-20">
       {/* Logo + Title */}
       <div className="flex items-center gap-2">
         <Vote className="w-7 h-7" />
@@ -21,7 +21,7 @@ function Header({ onLogout }) {
           <Menu className="w-6 h-6" />
         </button>
       </div>
-    </header>
+    </div>
   );
 }
 
