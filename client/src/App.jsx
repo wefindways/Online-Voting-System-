@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Registration from "./pages/user/Registration.js";
-import Login from "./pages/user/Login.jsx";
-import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
-import StudentDashboard from "./pages/user/StudentDashboard.jsx";
-import AdminPage from "./pages/admin/AdminPage.jsx";
-import AdminLogin from "./pages/admin/AdminLogin.jsx";
-import Votes from "./pages/admin/Votes.jsx";
-import Voters from "./pages/admin/Voters.jsx";
-import Positions from "./pages/admin/Positions.jsx";
-import Candidates from "./pages/admin/Candidates.jsx";
-import BallotPosition from "./pages/admin/BallotPosition.jsx";
-import ElectionTitle from "./pages/admin/ElectionTitle.jsx";
+import Registration from "./pages/user/Registration";
+import Login from "./pages/user/Login";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import StudentDashboard from "./pages/user/StudentDashboard";
+import AdminPage from "./pages/admin/AdminPage";
+import AdminLogin from "./pages/admin/AdminLogin";
+import Votes from "./pages/admin/Votes";
+import Voters from "./pages/admin/Voters";
+import Positions from "./pages/admin/Positions";
+import Candidates from "./pages/admin/Candidates";
+import BallotPosition from "./pages/admin/BallotPosition";
+import ElectionTitle from "./pages/admin/ElectionTitle";
 
 function App() {
   return (
