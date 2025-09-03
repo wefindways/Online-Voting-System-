@@ -12,7 +12,7 @@ function Breadcrumb() {
     <nav className="text-xs sm:text-sm flex items-center">
       <Link to="/admin/home">
         <div className="flex items-center gap-2 text-gray-700 hover:text-blue-700">
-          <PieChart />
+          <PieChart className="w-4 h-4 md:w-6 md:h-6" />
           <span>Home</span>
         </div>
       </Link>
