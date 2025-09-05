@@ -53,9 +53,7 @@ export default function Registration() {
       <div className="container m-auto grid grid-cols-1 lg:grid-cols-2 gap-25 overflow-hidden justify-center items-center">
         {/* Left Section - Welcome Message */}
         <div className="max-w-full space-y-6 px-2 sm:px-6">
-          <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-snug tracking-tight"
-          >
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-snug tracking-tight">
             Welcome to{" "}
             <span className="text-blue-600 drop-shadow-md">CampusBallot!</span>
           </h1>
@@ -87,9 +85,7 @@ export default function Registration() {
               <UserPlus size={28} />
             </div>
             <div>
-              <h1
-                className="text-xl md:text-3xl font-bold text-gray-800"
-              >
+              <h1 className="text-xl md:text-3xl font-bold text-gray-800">
                 Student Registration
               </h1>
               <p className="text-gray-500 text-md mt-1">
@@ -206,13 +202,13 @@ export default function Registration() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full text-white py-3 rounded-lg text-lg font-semibold cursor-pointer ${
+              className={`w-full text-white py-3 rounded-lg text-lg font-semibold cursor-pointer active:bg-blue-500 transition duration-200 ${
                 isSubmitting
                   ? "bg-blue-300 text-white cursor-not-allowed border-none"
-                  : "bg-blue-600 hover:bg-blue-700 transition duration-200"
+                  : "bg-blue-600 hover:bg-blue-700"
               }`}
             >
-              {isSubmitting ? "Registering" : "Register"}
+              {isSubmitting ? "Registering..." : "Register"}
             </button>
           </form>
 

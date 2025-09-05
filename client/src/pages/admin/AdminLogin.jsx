@@ -101,13 +101,13 @@ function AdminLogin() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full border border-gray-300 py-3 rounded-lg text-lg font-medium cursor-pointer ${
+            className={`w-full border border-gray-300 py-3 rounded-lg text-lg font-medium cursor-pointer active:bg-blue-500 transition duration-200 ${
               loading
                 ? "bg-blue-300 text-white cursor-not-allowed border-none"
-                : "bg-blue-600 hover:bg-blue-700 text-white transition duration-200"
+                : "bg-blue-600 hover:bg-blue-700 text-white"
             }`}
           >
-            {loading ? "Logging in" : "Login"}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 

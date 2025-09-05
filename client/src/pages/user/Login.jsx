@@ -104,13 +104,13 @@ function Login() {
           <button
             type="submit"
             disabled={isLogginIn}
-            className={`w-full py-3 rounded-lg text-lg font-semibold cursor-pointer ${
+            className={`w-full py-3 rounded-lg text-lg font-semibold cursor-pointer active:bg-blue-500 transition duration-200 ${
               isLogginIn
                 ? "bg-blue-300 text-white cursor-not-allowed border-none"
-                : "bg-blue-600 hover:bg-blue-700 text-white transition duration-200"
+                : "bg-blue-600 hover:bg-blue-700 text-white"
             }`}
           >
-            {isLogginIn ? "Logging in" : "Login"}
+            {isLogginIn ? "Logging in..." : "Login"}
           </button>
         </form>
 
