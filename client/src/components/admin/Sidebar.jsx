@@ -9,18 +9,28 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({ isOpen }) {
   return (
     <div>
       {/* Reports section */}
-      <div className="px-6 py-4 border-b border-b-gray-100">
+      <div
+        className={`${
+          isOpen ? "block" : "hidden"
+        } px-6 py-4 border-b border-b-gray-100`}
+      >
         <p className="text-gray-500 text-sm font-semibold tracking-wide uppercase">
           Reports
         </p>
       </div>
 
       {/* Navigation */}
-      <div className="flex flex-col px-4 py-2 space-y-2">
+      <div
+        className={`${
+          isOpen
+            ? "flex flex-col px-4 py-2 space-y-2"
+            : "flex flex-col px-4 pb-2 pt-5 space-y-2"
+        }`}
+      >
         <NavLink
           to="/admin/home"
           end
@@ -29,7 +39,9 @@ function Sidebar() {
           }
         >
           <PieChart />
-          <span className="ml-3">Dashboard</span>
+          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
+            Dashboard
+          </span>
         </NavLink>
         <NavLink
           to="/admin/home/votes"
@@ -38,19 +50,29 @@ function Sidebar() {
           }
         >
           <Vote />
-          <span className="ml-3">Votes</span>
+          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>Votes</span>
         </NavLink>
       </div>
 
       {/* Manage section */}
-      <div className="px-6 py-4 border-b border-b-gray-100">
+      <div
+        className={`${
+          isOpen ? "block" : "hidden"
+        } px-6 py-4 border-b border-b-gray-100`}
+      >
         <p className="text-gray-500 text-sm font-semibold tracking-wide uppercase">
           Manage
         </p>
       </div>
 
       {/* Navigation */}
-      <div className="flex flex-col px-4 py-2 space-y-2">
+      <div
+        className={`${
+          isOpen
+            ? "flex flex-col px-4 py-2 space-y-2"
+            : "flex flex-col px-4 pb-2 space-y-2"
+        }`}
+      >
         <NavLink
           to="/admin/home/voters"
           className={({ isActive }) =>
@@ -58,7 +80,7 @@ function Sidebar() {
           }
         >
           <UserCheck />
-          <span className="ml-3">Voters</span>
+          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>Voters</span>
         </NavLink>
         <NavLink
           to="/admin/home/positions"
@@ -67,7 +89,9 @@ function Sidebar() {
           }
         >
           <Medal />
-          <span className="ml-3">Positions</span>
+          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
+            Positions
+          </span>
         </NavLink>
         <NavLink
           to="/admin/home/candidates"
@@ -76,19 +100,31 @@ function Sidebar() {
           }
         >
           <Users />
-          <span className="ml-3">Candidates</span>
+          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
+            Candidates
+          </span>
         </NavLink>
       </div>
 
       {/* Settings section*/}
-      <div className="px-6 py-4 border-b border-b-gray-100">
+      <div
+        className={`${
+          isOpen ? "block" : "hidden"
+        } px-6 py-4 border-b border-b-gray-100`}
+      >
         <p className="text-gray-500 text-sm font-semibold tracking-wide uppercase">
           Settings
         </p>
       </div>
 
       {/* Navigation */}
-      <div className="flex flex-col px-4 py-2 space-y-2">
+      <div
+        className={`${
+          isOpen
+            ? "flex flex-col px-4 py-2 space-y-2"
+            : "flex flex-col px-4 space-y-2"
+        }`}
+      >
         <NavLink
           to="/admin/home/ballot-position"
           className={({ isActive }) =>
@@ -96,7 +132,9 @@ function Sidebar() {
           }
         >
           <FileStack />
-          <span className="ml-3">Ballot Position</span>
+          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
+            Ballot Position
+          </span>
         </NavLink>
         <NavLink
           to="/admin/home/election-title"
@@ -105,7 +143,9 @@ function Sidebar() {
           }
         >
           <Briefcase />
-          <span className="ml-3">Election Title</span>
+          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
+            Election Title
+          </span>
         </NavLink>
       </div>
     </div>

@@ -1,11 +1,15 @@
-import { useEffect } from "react";
-import { useNavigate, Outlet } from "react-router-dom";
-import Header from "../../components/admin/Header.jsx";
-import Sidebar from "../../components/admin/Sidebar.jsx";
-import Footer from "../../components/admin/Footer.jsx";
+import { useState, useEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import Header from "../../components/admin/Header";
+import Sidebar from "../../components/admin/Sidebar";
+import Footer from "../../components/admin/Footer";
 
 function AdminPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar starts OPEN
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
   useEffect(() => {
     const isAdmin = localStorage.getItem("isAdmin");
@@ -20,26 +24,59 @@ function AdminPage() {
     navigate("/admin/login");
   };
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setIsSidebarOpen(false);
+    }
+  }, [location.pathname, isMobile]);
+
+  const sidebarWidth = isMobile
+    ? isSidebarOpen
+      ? "100%"
+      : "0"
+    : isSidebarOpen
+    ? "280px"
+    : "90px";
+
   return (
-    <div className="admin-dashboard min-h-screen grid grid-rows-[auto_1fr] grid-cols-[0_1fr] md:grid-cols-[280px_1fr] overflow-hidden">
-      {/* Header - spans full width */}
-      <header className="row-start-1 col-span-2">
-        <Header onLogout={handleLogout} />
+    <div className="min-h-screen bg-gray-50">
+      {/* Fixed header */}
+      <header className="fixed top-0 left-0 right-0 z-20">
+        <Header
+          onLogout={handleLogout}
+          onToggleMenu={toggleSidebar}
+          isSidebarOpen={isSidebarOpen}
+        />
       </header>
 
-      {/* Sidebar - fixed on the left */}
-      <aside className="row-start-2 col-start-1 bg-white ">
-        <Sidebar />
+      {/* Fixed sidebar */}
+      <aside
+        id="admin-sidebar"
+        className={`fixed top-14 sm:top-16 left-0 bottom-0 bg-white overflow-y-auto md:transition-all md:duration-300`}
+        style={{ width: sidebarWidth }}
+      >
+        <Sidebar aria-hidden={!isSidebarOpen} isOpen={isSidebarOpen} />
       </aside>
 
-      {/* Main content area */}
-      <main className="row-start-2 col-start-2 bg-gray-50 p-6 overflow-y-auto">
-        <Outlet /> {/* Nested pages show here */}
-      </main>
+      {/* Wrap the main and footer together */}
+      <div
+        className="flex flex-col min-h-screen pt-14 md:pt-16 md:transition-all md:duration-300"
+        style={{ marginLeft: sidebarWidth }}
+      >
+        <main className="flex-1 px-6 pt-6 pb-[100px] overflow-y-auto">
+          <Outlet />
+        </main>
 
-      <footer className="row-start-3 col-start-2">
-        <Footer />
-      </footer>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </div>
   );
 }
