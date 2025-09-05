@@ -3,3 +3,6 @@ vendor
 
 # hides .env
 .env
+
+# hides admin password
+hash_admin.php
