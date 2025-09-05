@@ -6,7 +6,7 @@ function AdminDashboard() {
   return (
     <div>
       <header className="flex justify-between items-center">
-        <h1 className="text-2xl sm:text-3xl font-bold">Dashboard</h1>
+        <h1 className="text-[1.37rem] md:text-3xl font-bold">Dashboard</h1>
         <Breadcrumb />
       </header>
       <section
@@ -15,7 +15,7 @@ function AdminDashboard() {
       >
         <StatCard
           value="3"
-          label="Voters Voter"
+          label="Voters Voted"
           icon={Edit}
           gradient="from-red-400 to-red-600"
         />
