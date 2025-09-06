@@ -1,41 +1,21 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useLogin } from "../../hooks/useLogin";
+import { Link } from "react-router-dom";
 import { Lock } from "lucide-react";
-import axios from "axios";
+import FormInput from "../../components/shared/FormInput";
+import MessageBox from "../../components/shared/MessageBox";
+import SubmitButton from "../../components/shared/SubmitButton";
+import Footer from "../../components/shared/Footer";
 
-function Login() {
-  const [studentId, setStudentId] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const [isLogginIn, setIsLoggingIn] = useState(false);
-  const navigate = useNavigate();
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "http://localhost/online-voting-system/project/server/api/auth/login.php",
-        {
-          student_id: studentId,
-          password: password,
-        }
-      );
-
-      if (response.data.success) {
-        setIsLoggingIn(true);
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 2000);
-      } else {
-        setIsLoggingIn(false);
-        setMessage(response.data.message);
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setMessage("⚠️ Something went wrong. Please try again.");
-    }
-  };
+export default function Login() {
+  const {
+    studentId,
+    password,
+    setStudentId,
+    setPassword,
+    message,
+    loading,
+    handleLogin,
+  } = useLogin();
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-3">
@@ -57,64 +37,32 @@ function Login() {
 
         {/* Form */}
         <form onSubmit={handleLogin}>
-          <div className="mb-5">
-            <label
-              htmlFor="student_id"
-              className="block text-lg font-semibold text-gray-700"
-            >
-              Student ID
-            </label>
-            <input
-              type="text"
-              id="student_id"
-              value={studentId}
-              onChange={(e) => setStudentId(e.target.value)}
-              className="w-full mt-2 py-3 px-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="e.g. 2025-005"
-              required
-            />
-          </div>
-
-          <div className="mb-6">
-            <label
-              htmlFor="password"
-              className="block text-lg font-semibold text-gray-700"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full mt-2 py-3 px-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              placeholder="Enter your password"
-              required
-            />
-          </div>
+          <FormInput
+            label="Student ID"
+            type="text"
+            id="studentId"
+            value={studentId}
+            onChange={(e) => setStudentId(e.target.value)}
+            placeholder="Enter your student id"
+            required
+          />
+          <FormInput
+            label="Password"
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
           {/* Error Message */}
-          {message && (
-            <p className="my-4 text-center border bg-red-50 border-red-300 py-3 rounded-lg text-base font-medium text-gray-600">
-              {message}
-            </p>
-          )}
+          {message && <MessageBox message={message} />}
 
           {/* Buttons */}
-          <button
-            type="submit"
-            disabled={isLogginIn}
-            className={`w-full py-3 rounded-lg text-lg font-semibold cursor-pointer active:bg-blue-500 transition duration-200 ${
-              isLogginIn
-                ? "bg-blue-300 text-white cursor-not-allowed border-none"
-                : "bg-blue-600 hover:bg-blue-700 text-white"
-            }`}
-          >
-            {isLogginIn ? "Logging in..." : "Login"}
-          </button>
+          <SubmitButton loading={loading}>Login</SubmitButton>
         </form>
 
-        {/* Footer */}
         <p className="text-center my-4">
           <Link
             to="/"
@@ -124,12 +72,11 @@ function Login() {
           </Link>
         </p>
 
-        <p className="mt-6 text-sm text-gray-500 text-center">
-          Need help? Contact the IT office — it@school.edu.ph
-        </p>
+        {/* Footer */}
+        <footer>
+          <Footer variant="help" />
+        </footer>
       </div>
     </div>
   );
 }
-
-export default Login;
