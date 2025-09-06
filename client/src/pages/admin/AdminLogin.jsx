@@ -1,4 +1,4 @@
-import { useAdminLogin } from "../../hooks/useAdminLogin";
+import { useAdminLogin } from "../../hooks/admin/useAdminLogin";
 import FormInput from "../../components/shared/FormInput";
 import MessageBox from "../../components/shared/MessageBox";
 import SubmitButton from "../../components/shared/SubmitButton";

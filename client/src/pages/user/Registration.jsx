@@ -1,4 +1,4 @@
-import { useRegistration } from "../../hooks/useRegistration";
+import { useRegistration } from "../../hooks/user/useRegistration";
 import { UserPlus } from "lucide-react"; // icon for header
 import { Link } from "react-router-dom" 
 import Footer from "../../components/shared/Footer";
