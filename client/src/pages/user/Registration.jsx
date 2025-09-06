@@ -1,53 +1,19 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useRegistration } from "../../hooks/useRegistration";
 import { UserPlus } from "lucide-react"; // icon for header
+import { Link } from "react-router-dom" 
 import Footer from "../../components/shared/Footer";
+import SubmitButton from "../../components/shared/SubmitButton";
+import MessageBox from "../../components/shared/MessageBox";
+import FormInput from "../../components/shared/FormInput";
 
 export default function Registration() {
-  const [formData, setFormData] = useState({
-    student_id: "",
-    first_name: "",
-    last_name: "",
-    department: "",
-    password: "",
-  });
-
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch(
-        "http://localhost/online-voting-system/project/server/api/auth/register.php",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      const result = await response.json();
-
-      if (result.success) {
-        setIsSubmitting(true);
-        setTimeout(() => {
-          navigate("/login");
-        }, 2000);
-      } else {
-        setIsSubmitting(false);
-        setMessage("⚠️ " + result.message);
-      }
-    } catch (error) {
-      setMessage("⚠️ Server error, please try again later.");
-    }
-  };
+  const {
+    formData,
+    handleChange,
+    handleSubmit,
+    message,
+    loading,
+  } = useRegistration();
 
   return (
     <div className="flex justify-center p-3 sm:p-10 items-center overflow-hidden min-h-screen bg-gray-50">
@@ -97,120 +63,64 @@ export default function Registration() {
 
           {/* Form */}
           <form onSubmit={handleSubmit}>
-            <div className="mb-5">
-              <label
-                htmlFor="student_id"
-                className="block text-lg font-semibold text-gray-700"
-              >
-                Student ID
-              </label>
-              <input
-                type="text"
-                name="student_id"
-                placeholder="e.g. 2025-005"
-                value={formData.student_id}
-                onChange={handleChange}
-                className="w-full mt-2 py-3 px-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                required
-              />
-              <p className="text-sm text-gray-500 mt-1">
-                Enter the student ID assigned by the school
-              </p>
-            </div>
-
+            <FormInput
+              label="Student ID"
+              type="type"
+              name="student_id"
+              placeholder="e.g 2025-005"
+              value={formData.student_id}
+              onChange={handleChange}
+              required
+              extraInfo="Enter the student ID assigned by the school"
+            />
             <div className="flex flex-wrap gap-4">
               <div className="flex-1 min-w-[150px]">
-                <label
-                  htmlFor="first_name"
-                  className="block text-lg font-semibold text-gray-700"
-                >
-                  First Name
-                </label>
-                <input
+                <FormInput
+                  label="First Name"
                   type="text"
                   name="first_name"
                   placeholder="Juan"
                   value={formData.first_name}
                   onChange={handleChange}
-                  className="w-full mt-2 py-3 px-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                   required
                 />
               </div>
-
-              <div className="mb-5 flex-1 min-w-[150px]">
-                <label
-                  htmlFor="last_name"
-                  className="block text-lg font-semibold text-gray-700"
-                >
-                  Last Name
-                </label>
-                <input
+              <div className="flex-1 min-w-[150px]">
+                <FormInput
+                  label="Last Name"
                   type="text"
                   name="last_name"
                   placeholder="Dela Cruz"
                   value={formData.last_name}
                   onChange={handleChange}
-                  className="w-full mt-2 py-3 px-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                   required
                 />
               </div>
             </div>
+            <FormInput
+              label="Department"
+              name="department"
+              type="text"
+              placeholder="e.g. BSIT"
+              value={formData.department}
+              onChange={handleChange}
+              required
+              extraInfo="No year level needed"
+            />
+            <FormInput
+              label="Password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
 
-            <div className="mb-5">
-              <label
-                htmlFor="department"
-                className="block text-lg font-semibold text-gray-700"
-              >
-                Department
-              </label>
-              <input
-                type="text"
-                name="department"
-                placeholder="e.g. BSIT"
-                value={formData.department}
-                onChange={handleChange}
-                className="w-full mt-2 py-3 px-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                required
-              />
-              <p className="text-sm text-gray-500 mt-1">No year level needed</p>
-            </div>
+            {/* Message */}
+            {message && <MessageBox message={message} />}
 
-            <div className="mb-6">
-              <label
-                htmlFor="password"
-                className="block text-lg font-semibold text-gray-700"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full mt-2 py-3 px-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                required
-              />
-
-              {/* Message */}
-              {message && (
-                <p className="mt-4 text-center border bg-red-50 border-red-300 py-3 rounded-lg text-base font-medium text-gray-600">
-                  {message}
-                </p>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`w-full text-white py-3 rounded-lg text-lg font-semibold cursor-pointer active:bg-blue-500 transition duration-200 ${
-                isSubmitting
-                  ? "bg-blue-300 text-white cursor-not-allowed border-none"
-                  : "bg-blue-600 hover:bg-blue-700"
-              }`}
-            >
-              {isSubmitting ? "Registering..." : "Register"}
-            </button>
+            <SubmitButton loading={loading}>Register</SubmitButton>
           </form>
 
           <p className="text-center my-4">
@@ -224,7 +134,7 @@ export default function Registration() {
 
           {/* Footer note */}
           <footer>
-            <Footer variant="note"/>
+            <Footer variant="note" />
           </footer>
         </div>
       </div>
