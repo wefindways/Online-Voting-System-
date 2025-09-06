@@ -1,39 +1,19 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useAdminLogin } from "../../hooks/useAdminLogin";
+import FormInput from "../../components/shared/FormInput";
+import MessageBox from "../../components/shared/MessageBox";
+import SubmitButton from "../../components/shared/SubmitButton";
 import { Lock } from "lucide-react";
-import axios from "axios";
 
-function AdminLogin() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-
-    try {
-      const res = await axios.post(
-        "http://localhost/online-voting-system/project/server/api/auth/admin_login.php",
-        { username, password }
-      );
-
-      if (res.data.success) {
-        localStorage.setItem("isAdmin", true);
-        localStorage.setItem("admin_id", res.data.admin_id);
-        setLoading(true);
-        setTimeout(() => {
-          navigate("/admin/home");
-        }, 2000);
-      } else {
-        setLoading(false);
-        setMessage("⚠️ " + res.data.message);
-      }
-    } catch (error) {
-      setMessage("⚠️ Server error, please try again later.");
-    }
-  };
+export default function AdminLogin() {
+  const {
+    username,
+    password,
+    setUsername,
+    setPassword,
+    message,
+    loading,
+    handleLogin,
+  } = useAdminLogin();
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-3">
@@ -54,61 +34,30 @@ function AdminLogin() {
 
         {/* Form */}
         <form onSubmit={handleLogin}>
-          <div className="mb-5">
-            <label
-              htmlFor="admin_username"
-              className="block text-lg font-semibold text-gray-700"
-            >
-              Username
-            </label>
-            <input
-              type="text"
-              id="admin_username"
-              placeholder="Enter username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full mt-2 py-3 px-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-          <div className="mb-5">
-            {" "}
-            <label
-              htmlFor="password"
-              className="block text-lg font-semibold text-gray-700"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full mt-2 py-3 px-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
+          <FormInput
+            label="Username"
+            type="text"
+            id="admin_username"
+            placeholder="Enter username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <FormInput
+            label="Password"
+            type="password"
+            id="admin_username"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
           {/* Error Message */}
-          {message && (
-            <p className="my-4 text-center border bg-red-50 border-red-300 py-3 rounded-lg text-base font-medium text-gray-600">
-              {message}
-            </p>
-          )}
+          {message && <MessageBox message={message} />}
 
           {/* Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className={`w-full border border-gray-300 py-3 rounded-lg text-lg font-medium cursor-pointer active:bg-blue-500 transition duration-200 ${
-              loading
-                ? "bg-blue-300 text-white cursor-not-allowed border-none"
-                : "bg-blue-600 hover:bg-blue-700 text-white"
-            }`}
-          >
-            {loading ? "Logging in..." : "Login"}
-          </button>
+          <SubmitButton loading={loading}>Login</SubmitButton>
         </form>
 
         {/* Footer */}
@@ -119,5 +68,3 @@ function AdminLogin() {
     </div>
   );
 }
-
-export default AdminLogin;
