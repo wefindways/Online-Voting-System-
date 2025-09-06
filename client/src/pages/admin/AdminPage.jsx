@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Header from "../../components/admin/Header";
 import Sidebar from "../../components/admin/Sidebar";
-import Footer from "../../components/admin/Footer";
+import Footer from "../../components/shared/Footer";
 
-function AdminPage() {
+export default function AdminPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Sidebar starts OPEN
@@ -74,11 +74,9 @@ function AdminPage() {
         </main>
 
         <footer>
-          <Footer />
+          <Footer variant="copyright"/>
         </footer>
       </div>
     </div>
   );
 }
-
-export default AdminPage;

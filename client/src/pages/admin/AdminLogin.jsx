@@ -3,6 +3,7 @@ import FormInput from "../../components/shared/FormInput";
 import MessageBox from "../../components/shared/MessageBox";
 import SubmitButton from "../../components/shared/SubmitButton";
 import { Lock } from "lucide-react";
+import Footer from "../../components/shared/Footer";
 
 export default function AdminLogin() {
   const {
@@ -61,9 +62,9 @@ export default function AdminLogin() {
         </form>
 
         {/* Footer */}
-        <p className="mt-6 text-sm text-gray-500 text-center">
-          Need help? Contact the IT office — it@school.edu.ph
-        </p>
+        <footer>
+          <Footer variant="help" />
+        </footer>
       </div>
     </div>
   );

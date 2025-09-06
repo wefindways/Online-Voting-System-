@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { UserPlus } from "lucide-react"; // icon for header
+import Footer from "../../components/shared/Footer";
 
 export default function Registration() {
   const [formData, setFormData] = useState({
@@ -222,9 +223,9 @@ export default function Registration() {
           </p>
 
           {/* Footer note */}
-          <p className="mt-6 text-sm text-gray-500 text-center">
-            Need help? Contact the IT office — it@school.edu.ph
-          </p>
+          <footer>
+            <Footer variant="note"/>
+          </footer>
         </div>
       </div>
     </div>
