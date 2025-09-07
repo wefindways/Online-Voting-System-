@@ -38,10 +38,12 @@ function Sidebar({ isOpen }) {
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
         >
-          <PieChart />
-          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
-            Dashboard
-          </span>
+          <div className="flex gap-3">
+            <PieChart />
+            <span className={`${isOpen ? "block" : "hidden"} truncate`}>
+              Dashboard
+            </span>
+          </div>
         </NavLink>
         <NavLink
           to="/admin/home/votes"
@@ -49,8 +51,12 @@ function Sidebar({ isOpen }) {
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
         >
-          <Vote />
-          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>Votes</span>
+          <div className="flex gap-3">
+            <Vote />
+            <span className={`${isOpen ? "block" : "hidden"} truncate`}>
+              Votes
+            </span>
+          </div>
         </NavLink>
       </div>
 
@@ -79,8 +85,12 @@ function Sidebar({ isOpen }) {
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
         >
-          <UserCheck />
-          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>Voters</span>
+          <div className="flex gap-3">
+            <UserCheck />
+            <span className={`${isOpen ? "block" : "hidden"} truncate`}>
+              Voters
+            </span>
+          </div>
         </NavLink>
         <NavLink
           to="/admin/home/positions"
@@ -88,10 +98,12 @@ function Sidebar({ isOpen }) {
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
         >
-          <Medal />
-          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
-            Positions
-          </span>
+          <div className="flex gap-3">
+            <Medal />
+            <span className={`${isOpen ? "block" : "hidden"} truncate`}>
+              Positions
+            </span>
+          </div>
         </NavLink>
         <NavLink
           to="/admin/home/candidates"
@@ -99,10 +111,12 @@ function Sidebar({ isOpen }) {
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
         >
-          <Users />
-          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
-            Candidates
-          </span>
+          <div className="flex gap-3">
+            <Users />
+            <span className={`${isOpen ? "block" : "hidden"} truncate`}>
+              Candidates
+            </span>
+          </div>
         </NavLink>
       </div>
 
@@ -131,10 +145,12 @@ function Sidebar({ isOpen }) {
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
         >
-          <FileStack />
-          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
-            Ballot Position
-          </span>
+          <div className="flex gap-3">
+            <FileStack />
+            <span className={`${isOpen ? "block" : "hidden"} truncate`}>
+              Ballot Position
+            </span>
+          </div>
         </NavLink>
         <NavLink
           to="/admin/home/election-title"
@@ -142,10 +158,12 @@ function Sidebar({ isOpen }) {
             `sidebar-nav ${isActive ? "bg-blue-100" : ""}`
           }
         >
-          <Briefcase />
-          <span className={`${isOpen ? "block" : "hidden"} ml-3`}>
-            Election Title
-          </span>
+          <div className="flex gap-3">
+            <Briefcase />
+            <span className={`${isOpen ? "block" : "hidden"} truncate`}>
+              Election Title
+            </span>
+          </div>
         </NavLink>
       </div>
     </div>
