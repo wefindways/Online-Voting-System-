@@ -14,7 +14,7 @@ export function useAdminLogin() {
 
     try {
       const res = await axios.post(
-        "http://localhost/online-voting-system/project/server/api/auth/admin_login.php",
+        "http://localhost/online-voting-system/project/server/api/auth/admin/admin_login.php",
         { username, password }
       );
 

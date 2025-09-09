@@ -24,7 +24,7 @@ export function useRegistration() {
 
     try {
       const res = await axios.post(
-        "http://localhost/online-voting-system/project/server/api/auth/register.php",
+        "http://localhost/online-voting-system/project/server/api/auth/user/register.php",
         formData
       );
 
