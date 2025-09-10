@@ -1,11 +1,11 @@
-export default function Footer({ variant = "copyright" }) {
-  const year = new Date().getFullYear();
+import { formatDate } from "../../utils/formatDate";
 
+export default function Footer({ variant = "copyright" }) {
   if (variant === "copyright") {
     return (
       <div className="bg-gray-200 py-6">
         <p className="text-xs md:text-sm text-center text-gray-600">
-          &copy; {year} Team CampusBallot. All rights reserved.
+          &copy; {formatDate()} Team CampusBallot. All rights reserved.
         </p>
       </div>
     );
