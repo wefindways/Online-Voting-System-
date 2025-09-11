@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-function Sidebar({ isOpen }) {
+export default function Sidebar({ isOpen }) {
   return (
     <div>
       {/* Reports section */}
@@ -169,5 +169,3 @@ function Sidebar({ isOpen }) {
     </div>
   );
 }
-
-export default Sidebar;

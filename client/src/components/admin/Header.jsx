@@ -1,6 +1,6 @@
 import { Menu } from "lucide-react";
 
-function Header({ onLogout, onToggleMenu, isSidebarOpen }) {
+export default function Header({ onLogout, onToggleMenu, isSidebarOpen }) {
   return (
     <header className="poppins text-white flex justify-between items-center bg-gradient-to-r from-blue-600 to-blue-500 shadow-md px-4 md:px-8 py-3 h-14 md:h-16">
       <div className="flex items-center gap-3 md:gap-5">
@@ -34,5 +34,3 @@ function Header({ onLogout, onToggleMenu, isSidebarOpen }) {
     </header>
   );
 }
-
-export default Header;

@@ -1,18 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Registration from "./pages/user/Registration";
 import Login from "./pages/user/Login";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import StudentDashboard from "./pages/user/StudentDashboard";
-import AdminPage from "./pages/admin/AdminPage";
-import AdminLogin from "./pages/admin/AdminLogin";
-import Votes from "./pages/admin/Votes";
-import Voters from "./pages/admin/Voters";
-import Positions from "./pages/admin/Positions";
-import Candidates from "./pages/admin/Candidates";
-import BallotPosition from "./pages/admin/BallotPosition";
-import ElectionTitle from "./pages/admin/ElectionTitle";
+import AdminDashboard from "./pages/admin/dashboard/AdminDashboard";
+import StudentDashboard from "./layouts/StudentDashboard";
+import AdminPage from "./layouts/AdminPage";
+import AdminLogin from "./pages/admin/auth/AdminLogin";
+import Votes from "./pages/admin/votes/Votes";
+import Voters from "./pages/admin/voters/Voters";
+import Positions from "./pages/admin/positions/PositionsPage";
+import Candidates from "./pages/admin/candidates/CandidatesPage";
+import BallotPosition from "./pages/admin/ballot-position/BallotPosition";
+import ElectionTitle from "./pages/admin/election-title/ElectionTitle";
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Routes>
@@ -43,5 +43,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

@@ -1,4 +1,4 @@
-import { useLogin } from "../../hooks/admin/useLogin";
+import { useLogin } from "../../hooks/user/useLogin";
 import { Link } from "react-router-dom";
 import { Lock } from "lucide-react";
 import FormInput from "../../components/shared/FormInput";
