@@ -1,30 +1,20 @@
-import { useState } from "react";
-import axios from "axios";
 import Modal from "../../../components/admin/Modal";
 import Breadcrumb from "../../../components/admin/Breadcrumb";
 import NewButton from "../../../components/admin/NewButton";
 import PositionsTable from "./PositionsTable";
+import { usePositions } from "../../../hooks/admin/positions";
 
 export default function Positions() {
-  const [showModal, setShowModal] = useState(false);
-  const [description, setDescription] = useState("");
-  const [maxVote, setMaxVote] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    axios
-      .post("http://localhost/online-voting-system/project/server/api/auth/admin/positions.php", {
-        description,
-        max_vote: maxVote,
-      })
-      .then(() => {
-        setShowModal(false);
-        setDescription("");
-        setMaxVote("");
-        // refresh table here
-      });
-  };
+  const {
+    showModal,
+    setShowModal,
+    description,
+    setDescription,
+    maxVote,
+    setMaxVote,
+    positions,
+    handleSubmit,
+  } = usePositions();
 
   return (
     <div className="grid grid-rows-[auto_auto] gap-5">
@@ -34,12 +24,10 @@ export default function Positions() {
       </header>
       <div className="bg-white p-4 rounded border-t-4 border-gray-300 shadow-md">
         <NewButton onAdd={() => setShowModal(true)} />
-        <PositionsTable />
+        <PositionsTable positions={positions} />
+
         {showModal && (
-          <Modal
-            title="Add New Position"
-            onClose={() => setShowModal(false)}
-          >
+          <Modal title="Add New Position" onClose={() => setShowModal(false)}>
             <form onSubmit={handleSubmit} className="space-y-4">
               <label className="block font-medium">
                 Position
