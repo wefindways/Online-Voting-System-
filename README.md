@@ -15,12 +15,6 @@
 - Visual server: Laragon
 
 ⚙️ Installation
-
-1. Clone the repository: https://github.com/wefindways/Online-Voting-System
-2. Navigate into the project folder: cd Online-Voting-System
-3. Install dependencies: npm install
-4. Start the development server: npm run dev
-
 🔑 Usage
 
 - Admin logs in to manage candidates and view results.
