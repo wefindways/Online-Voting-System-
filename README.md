@@ -15,6 +15,7 @@
 - Visual server: Laragon
 
 ⚙️ Installation
+
 🔑 Usage
 
 - Admin logs in to manage candidates and view results.
